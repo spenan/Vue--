@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue实现的全选、反选和不选功能</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script src="js/vue.js"></script>
+    <script src="js/index.js"></script>
+
+    <template id="my-check">
+        
+                <div class="demo">
+                        <ul id="list">
+                            <li v-for="(item,key) in lists.items" :key=key>
+                                <label><input type="checkbox" v-model="item.state" @change="selectChk()"> {{item.name}}</label>
+                            </li>
+                        </ul>
+                        
+                        
+                        <input type="checkbox" id="all" v-model="lists.checkAll.state" @change="checkAll()">
+                        <button class="btn" @click="checkAllBtn()">{{lists.checkAll.name}}</button>
+                        <input type="button" value="全不选" class="btn" @click="nocheckAll()" >
+                        <input type="button" value="反选" class="btn" @click="Reverse()">
+                        <input type="button" value="获得选中的所有值" class="btn" @click="getValue">
+                </div>
+            
+    </template>
+</head>
+
+<body>
+    <div id="main">
+        <h2 class="top_title">Vue实现的全选、反选和不选功能</a>
+        </h2>
+
+        <my-check :lists="lists" :all="lists.checkAll"></my-check>
+
+    </div>
+
+</body>
+
+</html>
